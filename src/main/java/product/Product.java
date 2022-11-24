@@ -4,7 +4,7 @@ package product;
  * Class of product.
  */
 public class Product {
-  private String productNumber;
+  private final String productNumber;
   private String description;
   private int price;
   private String brand;
