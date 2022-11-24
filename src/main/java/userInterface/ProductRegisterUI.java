@@ -70,7 +70,7 @@ public class ProductRegisterUI {
           break;
 
         case SEARCH_PRODUCT:
-          searchProduct();
+          searchProductMenu();
           break;
 
         case ADD_PRODUCT:
@@ -86,7 +86,7 @@ public class ProductRegisterUI {
           break;
 
         case CHANGE_PRODUCT_INFORMATION:
-          changeProductInformation();
+          changeProductInformationMenu();
           break;
 
         case EXIT:
@@ -105,7 +105,7 @@ public class ProductRegisterUI {
    * Allows the user to choose between searching for a product by product number or description.
    * Also prints out the products found.
    */
-  private void searchProduct() {
+  private void searchProductMenu() {
     System.out.println("What do you wish to search with? \n"
           + "1. Product number \n"
           + "2. Description \n");
@@ -126,7 +126,7 @@ public class ProductRegisterUI {
   /**
    * Menu to let the user select what he wants to change about a product.
    */
-  private void changeProductInformation() {
+  private void changeProductInformationMenu() {
     System.out.println("Please select what you want to change: \n"
           + "1. Description of a product \n"
           + "2. Price of a product \n");
@@ -196,22 +196,14 @@ public class ProductRegisterUI {
       }
     } while (tempProductNumber.isEmpty() || alreadyExists);
 
-    String tempDescription;
-    do {
-      System.out.println("Enter a description for the product: ");
-      tempDescription = sc.nextLine();
-    } while (tempDescription.isEmpty());
+    String tempDescription = stringChecker("Enter a description for the product: ");
 
     int tempPrice;
     System.out.println("Enter a price for the product: ");
     tempPrice = intCheckerPositive();
     clearScanner();
 
-    String tempBrand;
-    do {
-      System.out.println("Enter the brand of the product: ");
-      tempBrand = sc.nextLine();
-    } while (tempBrand.isEmpty());
+    String tempBrand = stringChecker("Enter the brand of the product: ");
 
     double tempWeight;
     System.out.println("Enter the weight of the product: ");
@@ -228,11 +220,7 @@ public class ProductRegisterUI {
     tempHeight = doubleCheckerPositive();
     clearScanner();
 
-    String tempColor;
-    do {
-      System.out.println("Enter the color of the product: ");
-      tempColor = sc.nextLine();
-    } while (tempColor.isEmpty());
+    String tempColor = stringChecker("Enter the color of the product: ");
 
     int tempStock;
     System.out.println("Enter the stock for the product: ");
@@ -354,6 +342,21 @@ public class ProductRegisterUI {
    */
   private void clearScanner() {
     sc.nextLine();
+  }
+
+  /**
+   * Checks the users' input to make sure it is not empty
+   *
+   * @param message to print out
+   * @return string inputed by the user
+   */
+  private String stringChecker(String message) {
+    String stringToReturn;
+    do {
+      System.out.println(message);
+      stringToReturn = sc.nextLine();
+    } while (stringToReturn.isEmpty());
+    return stringToReturn;
   }
 
   /**
