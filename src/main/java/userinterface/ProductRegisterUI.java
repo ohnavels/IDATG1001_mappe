@@ -1,11 +1,10 @@
-package userInterface;
+package userinterface;
 
+import java.util.Scanner;
 import product.Product;
 import product.ProductCategory;
 import product.ProductSpecifications;
-import product.Register;
-
-import java.util.Scanner;
+import register.Register;
 
 /**
  * ProductRegisterUI handles all user interface interactions.
@@ -18,7 +17,7 @@ public class ProductRegisterUI {
   /**
    * The Menu items.
    */
-  String[] menuItems
+  private final String[] menuItems
         = {
           "1. List all products",
           "2. Search for product",
@@ -45,7 +44,7 @@ public class ProductRegisterUI {
   private static final int CHANGE_PRODUCT_PRICE = 2;
 
   /**
-   * Creates an instance of the LongJumpUI User interface.
+   * Creates an instance of the ProductRegisterUI User interface.
    */
   public ProductRegisterUI(Register register) {
     this.register = register;
@@ -181,7 +180,7 @@ public class ProductRegisterUI {
   }
 
   /**
-   * Method to let the user add a long jump result to the register.
+   * Method to let the user add a product to the register.
    * The method also uses other methods to validate the input from the user.
    */
   private void addProductFromUser() {
@@ -196,14 +195,16 @@ public class ProductRegisterUI {
       }
     } while (tempProductNumber.isEmpty() || alreadyExists);
 
-    String tempDescription = stringChecker("Enter a description for the product: ");
+    String tempDescription;
+    tempDescription = stringChecker("Enter a description for the product: ");
 
     int tempPrice;
     System.out.println("Enter a price for the product: ");
     tempPrice = intCheckerPositive();
     clearScanner();
 
-    String tempBrand = stringChecker("Enter the brand of the product: ");
+    String tempBrand;
+    tempBrand = stringChecker("Enter the brand of the product: ");
 
     double tempWeight;
     System.out.println("Enter the weight of the product: ");
@@ -220,7 +221,8 @@ public class ProductRegisterUI {
     tempHeight = doubleCheckerPositive();
     clearScanner();
 
-    String tempColor = stringChecker("Enter the color of the product: ");
+    String tempColor;
+    tempColor = stringChecker("Enter the color of the product: ");
 
     int tempStock;
     System.out.println("Enter the stock for the product: ");
@@ -238,7 +240,8 @@ public class ProductRegisterUI {
     } while (tempCategory == null);
 
     if (register.addProduct(new Product(tempProductNumber, tempDescription, tempPrice, tempBrand,
-          new ProductSpecifications(tempWeight, tempLength, tempHeight, tempColor), tempStock, tempCategory))) {
+          new ProductSpecifications(tempWeight, tempLength, tempHeight, tempColor),
+          tempStock, tempCategory))) {
       System.out.println("Product with product number " + tempProductNumber + " was added.");
     } else {
       System.err.println("Failed to add product with product number: " + tempProductNumber + ".");
@@ -345,10 +348,10 @@ public class ProductRegisterUI {
   }
 
   /**
-   * Checks the users' input to make sure it is not empty
+   * Checks the users' input to make sure it is not empty.
    *
    * @param message to print out
-   * @return string inputed by the user
+   * @return string input by the user
    */
   private String stringChecker(String message) {
     String stringToReturn;

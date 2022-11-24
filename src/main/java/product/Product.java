@@ -24,7 +24,8 @@ public class Product {
    * @param stock           stock
    * @param category        category
    */
-  public Product(String productNumber, String description, int price, String brand, ProductSpecifications specifications, int stock, ProductCategory category) {
+  public Product(String productNumber, String description, int price, String brand,
+                 ProductSpecifications specifications, int stock, ProductCategory category) {
     this.productNumber = productNumber;
     this.description = description;
     setPrice(price);

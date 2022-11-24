@@ -1,4 +1,8 @@
-package product;
+package register;
+
+import product.Product;
+import product.ProductCategory;
+import product.ProductSpecifications;
 
 import java.util.ArrayList;
 import java.util.EnumSet;
@@ -46,15 +50,15 @@ public class Register {
    * @return true if product was added, false if product was not added
    */
   public boolean addProduct(Product product) {
-    boolean booleanToReturn = true;
+    boolean booleanToReturn = false;
     //If check to only add the product to the register if the product number
     // does not exist in the register
-    if (isProductNumberInRegister(product.getProductNumber())) {
-      booleanToReturn = false;
+    if (!isProductNumberInRegister(product.getProductNumber())) {
+      productRegister.put(product.getProductNumber(), product);
+      //Setting the boolean to true to indicate adding product to the register went smoothly.
+      booleanToReturn = true;
     }
 
-    productRegister.put(product.getProductNumber(), product);
-    //Returning true to indicate that adding the product to the register went smoothly
     return booleanToReturn;
   }
 
