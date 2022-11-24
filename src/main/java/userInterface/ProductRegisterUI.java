@@ -47,8 +47,8 @@ public class ProductRegisterUI {
   /**
    * Creates an instance of the LongJumpUI User interface.
    */
-  public ProductRegisterUI() {
-    register = new Register();
+  public ProductRegisterUI(Register register) {
+    this.register = register;
     register.addTestData();
     sc = new Scanner(System.in);
     start();

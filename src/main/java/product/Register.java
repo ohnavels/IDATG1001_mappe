@@ -13,14 +13,28 @@ import java.util.Map;
 public class Register {
   private final HashMap<String, Product> productRegister;
 
+  /**
+   * Constructor for register class.
+   * Creates a new HashMap upon instantiation.
+   */
   public Register() {
     this.productRegister = new HashMap<>();
   }
 
+  /**
+   * Getter for the productRegister field.
+   *
+   * @return Map of the product register
+   */
   public Map<String, Product> getProductRegister() {
     return this.productRegister;
   }
 
+  /**
+   * Getter for an iterator of String.
+   *
+   * @return iterator of String
+   */
   private Iterator<String> getIterator() {
     return getProductRegister().keySet().iterator();
   }

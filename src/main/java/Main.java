@@ -1,3 +1,4 @@
+import product.Register;
 import userInterface.ProductRegisterUI;
 
 /**
@@ -6,6 +7,7 @@ import userInterface.ProductRegisterUI;
  */
 public class Main {
   public static void main(String[] args) {
-    new ProductRegisterUI();
+    Register productRegister = new Register();
+    new ProductRegisterUI(productRegister);
   }
 }

@@ -9,6 +9,14 @@ public class ProductSpecifications {
   private double height;
   private String color;
 
+  /**
+   * Constructor for the ProductSpecifications class.
+   *
+   * @param weight weight of the product
+   * @param length length of the product
+   * @param height height of the product
+   * @param color color of the product
+   */
   public ProductSpecifications(double weight, double length, double height, String color) {
     setWeight(weight);
     setLength(length);
