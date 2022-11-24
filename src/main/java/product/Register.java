@@ -28,32 +28,20 @@ public class Register {
   /**
    * Adds a product to the register.
    *
-   * @param productNumber product number of product must be unique in the register
-   * @param description   description of the product
-   * @param price         price of the product
-   * @param brand         brand of the product
-   * @param weight        weight of the product
-   * @param length        length of the product
-   * @param height        height of the product
-   * @param color         color of the product
-   * @param stock         stock of the product
-   * @param category      Enum from ProductCategory.java
+   * @param product product to add to the register
    * @return true if product was added, false if product was not added
    */
-  public boolean addProduct(String productNumber, String description, int price, String brand,
-                            double weight, double length, double height, String color,
-                            int stock, ProductCategory category) {
-
+  public boolean addProduct(Product product) {
+    boolean booleanToReturn = true;
     //If check to only add the product to the register if the product number
     // does not exist in the register
-    if (isProductNumberInRegister(productNumber)) {
-      return false;
+    if (isProductNumberInRegister(product.getProductNumber())) {
+      booleanToReturn = false;
     }
 
-    productRegister.put(productNumber, new Product(productNumber, description, price, brand,
-        weight, length, height, color, stock, category));
-    //Returning 0 to indicate that adding the product to the register went smoothly
-    return true;
+    productRegister.put(product.getProductNumber(), product);
+    //Returning true to indicate that adding the product to the register went smoothly
+    return booleanToReturn;
   }
 
   /**
@@ -118,12 +106,13 @@ public class Register {
    * @return true/false depending on whether a product has been removed or not.
    */
   public boolean removeProductByProductNumber(String productNumber) {
+    boolean booleanToReturn = false;
     if (isProductNumberInRegister(productNumber)) {
       getProductRegister().remove(productNumber);
-      return true;
-    } else {
-      return false;
+      booleanToReturn = true;
     }
+
+    return booleanToReturn;
   }
 
   /**
@@ -159,15 +148,16 @@ public class Register {
 
   /**
    * Adds products into the register to use for testing.
+   * TODO: Lag mer test data.
    */
   public void addTestData() {
-    addProduct("LF432893", "Brown floor laminate", 499, "Dunno",
-        3, 200, 4.5, "Brown", 5, ProductCategory.LAMINATEFLOOR);
-    addProduct("BMDR382", "Yellow door", 7999, "BM",
-        25, 80, 240, "Yellow", 5, ProductCategory.DOOR);
-    addProduct("BMPL921", "Plank", 123, "BM",
-        8.5, 300, 25, "Light Blue", 149, ProductCategory.LUMBER);
-    addProduct("OBSWND328", "Window with black frame", 4000, "OBS",
-        14.5, 100, 100, "Black", 5, ProductCategory.WINDOW);
+    addProduct(new Product("LF432893", "Brown floor laminate", 499, "Dunno",
+        new ProductSpecifications(3, 200, 4.5, "Brown"), 5, ProductCategory.LAMINATEFLOOR));
+    addProduct(new Product("BMDR382", "Yellow door", 7999, "BM",
+        new ProductSpecifications(25, 80, 240, "Yellow"), 5, ProductCategory.DOOR));
+    addProduct(new Product("BMPL921", "Plank", 123, "BM",
+        new ProductSpecifications(8.5, 300, 25, "Light Blue"), 149, ProductCategory.LUMBER));
+    addProduct(new Product("OBSWND328", "Window with black frame", 4000, "OBS",
+        new ProductSpecifications(14.5, 100, 100, "Black"), 5, ProductCategory.WINDOW));
   }
 }

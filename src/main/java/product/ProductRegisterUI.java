@@ -90,7 +90,7 @@ public class ProductRegisterUI {
           break;
 
         default:
-          System.out.println(
+          System.err.println(
                 "\nERROR: Please enter a number between 0 and " + this.menuItems.length + "..\n");
       }
     }
@@ -114,7 +114,7 @@ public class ProductRegisterUI {
       case EXIT:
         break;
       default:
-        System.out.println("\n ERROR: Please enter a number between 0 and 2 \n");
+        System.err.println("\n ERROR: Please enter a number between 0 and 2 \n");
     }
   }
 
@@ -138,7 +138,7 @@ public class ProductRegisterUI {
         break;
 
       default:
-        System.out.println("\n ERROR: Please enter a number between 0 and 2 \n");
+        System.err.println("\n ERROR: Please enter a number between 0 and 2 \n");
     }
   }
 
@@ -153,6 +153,7 @@ public class ProductRegisterUI {
       System.out.println("Enter the product number you wish to search for: ");
       enteredProductNumber = sc.nextLine();
     } while (enteredProductNumber.isEmpty());
+
     //Prints out all the products that contain the entered product number.
     register.searchProductByProductNumber(enteredProductNumber)
           .forEach(product -> System.out.println(product.productDetails()));
@@ -168,6 +169,7 @@ public class ProductRegisterUI {
       System.out.println("Enter the description you wish to search for: ");
       enteredDescription = sc.nextLine();
     } while (enteredDescription.isEmpty());
+
     //Prints out all the products that contain the entered description.
     register.searchProductByDescription(enteredDescription)
           .forEach(product -> System.out.println(product.productDetails()));
@@ -185,7 +187,7 @@ public class ProductRegisterUI {
       tempProductNumber = sc.nextLine();
       alreadyExists = register.isProductNumberInRegister(tempProductNumber);
       if (alreadyExists) {
-        System.out.println("That product number is already in the register. ");
+        System.err.println("That product number is already in the register. ");
       }
     } while (tempProductNumber.isEmpty() || alreadyExists);
 
@@ -238,15 +240,15 @@ public class ProductRegisterUI {
       String categoryToSearch = sc.nextLine().toUpperCase();
       tempCategory = register.getCategoryFromList(categoryToSearch);
       if (tempCategory == null) {
-        System.out.println("That category is not valid.");
+        System.err.println("That category is not valid.");
       }
     } while (tempCategory == null);
 
-    if (register.addProduct(tempProductNumber, tempDescription, tempPrice, tempBrand,
-          tempWeight, tempLength, tempHeight, tempColor, tempStock, tempCategory)) {
+    if (register.addProduct(new Product(tempProductNumber, tempDescription, tempPrice, tempBrand,
+          new ProductSpecifications(tempWeight, tempLength, tempHeight, tempColor), tempStock, tempCategory))) {
       System.out.println("Product with product number " + tempProductNumber + " was added.");
     } else {
-      System.out.println("Failed to add product with product number: " + tempProductNumber + ".");
+      System.err.println("Failed to add product with product number: " + tempProductNumber + ".");
     }
   }
 
@@ -310,13 +312,13 @@ public class ProductRegisterUI {
     int tries = 0;
     do {
       if (tries > 2) {
-        System.out.println("Failed to provide a valid product number \nExiting... ");
+        System.err.println("Failed to provide a valid product number \nExiting... ");
         return null;
       }
       System.out.println("Enter the product number you wish to edit: ");
       tempProductNumber = sc.nextLine();
       if (!register.isProductNumberInRegister(tempProductNumber)) {
-        System.out.println("That product number does not exist in the register.");
+        System.err.println("That product number does not exist in the register.");
       }
       tries++;
     } while (tempProductNumber.isEmpty() || !register.isProductNumberInRegister(tempProductNumber));
@@ -337,7 +339,7 @@ public class ProductRegisterUI {
       System.out.println("Successfully removed product with product number: "
             + tempProductNumber + "\n");
     } else {
-      System.out.println("Failed to remove product.");
+      System.err.println("Could not find a product with that product number.");
     }
   }
 
@@ -356,7 +358,7 @@ public class ProductRegisterUI {
    */
   private int intChecker() {
     while (!sc.hasNextInt()) {
-      System.out.println("Please enter an integer value, only whole numbers (no decimals): ");
+      System.err.println("Please enter an integer value, only whole numbers (no decimals): ");
       sc.next();
     }
     return sc.nextInt();
@@ -370,7 +372,7 @@ public class ProductRegisterUI {
   private int intCheckerPositive() {
     int userInput = intChecker();
     while (userInput < 0) {
-      System.out.println("Please enter a positive integer: ");
+      System.err.println("Please enter a positive integer: ");
       userInput = intChecker();
     }
     return userInput;
@@ -383,7 +385,7 @@ public class ProductRegisterUI {
    */
   private double doubleChecker() {
     while (!sc.hasNextDouble()) {
-      System.out.println("Please enter a double value (1 or 1.1): ");
+      System.err.println("Please enter a double value (1 or 1.1): ");
       sc.next();
     }
     return sc.nextDouble();
@@ -397,7 +399,7 @@ public class ProductRegisterUI {
   private double doubleCheckerPositive() {
     double userInput = doubleChecker();
     while (userInput < 0) {
-      System.out.println("Please enter a positive double value: ");
+      System.err.println("Please enter a positive double value: ");
       userInput = doubleChecker();
     }
     return userInput;
@@ -422,7 +424,7 @@ public class ProductRegisterUI {
     if (reader.hasNextInt()) {
       menuSelection = reader.nextInt();
     } else {
-      System.out.println("You must enter a number, not text");
+      System.err.println("You must enter a number, not text");
     }
     return menuSelection;
   }
