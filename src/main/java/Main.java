@@ -1,4 +1,4 @@
-import product.ProductRegisterUI;
+import userInterface.ProductRegisterUI;
 
 /**
  * Main class for ProductRegister.

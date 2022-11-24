@@ -1,4 +1,9 @@
-package product;
+package userInterface;
+
+import product.Product;
+import product.ProductCategory;
+import product.ProductSpecifications;
+import product.Register;
 
 import java.util.Scanner;
 
