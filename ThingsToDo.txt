@@ -6,3 +6,4 @@ Coupling
 Sekvensdiagram og diskuter hva som skjer
 AKtivitetsdiagram
 Svakheter: stuck i while loop
+Reference visual paradigm
