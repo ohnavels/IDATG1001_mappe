@@ -107,6 +107,6 @@ public class Product {
           .append("color: ").append(specifications.getColor()).append("\n")
           .append("stock: ").append(stock).append("\n")
           .append("category: ").append(category).append("\n");
-    return stringBuilder.toString();
+    return String.valueOf(stringBuilder);
   }
 }

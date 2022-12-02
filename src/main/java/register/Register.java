@@ -108,16 +108,6 @@ public class Register {
   }
 
   /**
-   * Prints out all products in the register to the console.
-   */
-  public void printRegister() {
-    Iterator<String> iterator = getIterator();
-    while (iterator.hasNext()) {
-      System.out.println(getProductRegister().get(iterator.next()).productDetails());
-    }
-  }
-
-  /**
    * Removes a product from the register.
    *
    * @param productNumber product number of the product to be removed.

@@ -65,7 +65,7 @@ public class ProductRegisterUI {
       int menuSelection = this.getMenuChoice(menuItems.length);
       switch (menuSelection) {
         case LIST_ALL_PRODUCTS:
-          register.printRegister();
+          printRegister();
           break;
 
         case SEARCH_PRODUCT:
@@ -144,6 +144,13 @@ public class ProductRegisterUI {
       default:
         System.err.println("\n ERROR: Please enter a number between 0 and 2 \n");
     }
+  }
+
+  /**
+   * Prints out all products in the register to the console.
+   */
+  public void printRegister() {
+    register.getProductRegister().forEach((s, product) -> System.out.println(product.productDetails()));
   }
 
   /**
