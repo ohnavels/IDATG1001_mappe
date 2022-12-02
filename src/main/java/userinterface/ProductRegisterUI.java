@@ -342,7 +342,7 @@ public class ProductRegisterUI {
       System.out.println("Successfully removed product with product number: "
             + tempProductNumber + "\n");
     } else {
-      System.err.println("Could not find a product with that product number.");
+      System.out.println("Could not find a product with that product number.");
     }
   }
 
