@@ -1,0 +1,8 @@
+Skriv om robusthet
+Klassediagram
+Refactoring
+Cohesion
+Coupling
+Sekvensdiagram og diskuter hva som skjer
+AKtivitetsdiagram
+Svakheter: stuck i while loop
