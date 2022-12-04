@@ -1,9 +1,15 @@
 Skriv om robusthet
 Klassediagram
 Refactoring
-Cohesion
-Coupling
+Cohesion s.260
+Coupling s.259
+Abstrahering s.68
+Modularisering s.69
+Duplisert kode s.261
+Enkapsulering s.266
+Ansvarsdrevet design s.271
 Sekvensdiagram og diskuter hva som skjer
 AKtivitetsdiagram
 Svakheter: stuck i while loop
 Reference visual paradigm
+Git

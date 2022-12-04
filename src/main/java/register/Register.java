@@ -1,21 +1,21 @@
 package register;
 
-import product.Product;
-import product.ProductCategory;
-import product.ProductSpecifications;
-
 import java.util.ArrayList;
 import java.util.EnumSet;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
+import product.Product;
+import product.ProductCategory;
 
 /**
  * Register class for Product.
  */
 public class Register {
   private final HashMap<String, Product> productRegister;
+  private final ArrayList<ProductCategory> categoryList =
+        new ArrayList<>(EnumSet.allOf(ProductCategory.class));
 
   /**
    * Constructor for register class.
@@ -58,7 +58,6 @@ public class Register {
       //Setting the boolean to true to indicate adding product to the register went smoothly.
       booleanToReturn = true;
     }
-
     return booleanToReturn;
   }
 
@@ -119,7 +118,6 @@ public class Register {
       getProductRegister().remove(productNumber);
       booleanToReturn = true;
     }
-
     return booleanToReturn;
   }
 
@@ -139,7 +137,7 @@ public class Register {
    * @return ArrayList of enums from ProductCategory
    */
   public List<ProductCategory> getCategoryList() {
-    return new ArrayList<>(EnumSet.allOf(ProductCategory.class));
+    return categoryList;
   }
 
   /**
@@ -152,20 +150,5 @@ public class Register {
   public ProductCategory getCategoryFromList(String categoryToFind) {
     return getCategoryList().stream().filter(category -> category.name()
         .equals(categoryToFind)).findFirst().orElse(null);
-  }
-
-  /**
-   * Adds products into the register to use for testing.
-   * TODO: Lag mer test data.
-   */
-  public void addTestData() {
-    addProduct(new Product("LF432893", "Brown floor laminate", 499, "Dunno",
-        new ProductSpecifications(3, 200, 4.5, "Brown"), 5, ProductCategory.LAMINATEFLOOR));
-    addProduct(new Product("BMDR382", "Yellow door", 7999, "BM",
-        new ProductSpecifications(25, 80, 240, "Yellow"), 5, ProductCategory.DOOR));
-    addProduct(new Product("BMPL921", "Plank", 123, "BM",
-        new ProductSpecifications(8.5, 300, 25, "Light Blue"), 149, ProductCategory.LUMBER));
-    addProduct(new Product("OBSWND328", "Window with black frame", 4000, "OBS",
-        new ProductSpecifications(14.5, 100, 100, "Black"), 5, ProductCategory.WINDOW));
   }
 }

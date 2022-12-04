@@ -48,7 +48,6 @@ public class ProductRegisterUI {
    */
   public ProductRegisterUI(Register register) {
     this.register = register;
-    register.addTestData();
     sc = new Scanner(System.in);
     start();
   }
@@ -150,7 +149,8 @@ public class ProductRegisterUI {
    * Prints out all products in the register to the console.
    */
   public void printRegister() {
-    register.getProductRegister().forEach((s, product) -> System.out.println(product.productDetails()));
+    register.getProductRegister().forEach(
+          (s, product) -> System.out.println(product.productDetails()));
   }
 
   /**
