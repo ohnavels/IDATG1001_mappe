@@ -357,7 +357,7 @@ public class ProductRegisterUI {
   /**
    * Checks the users' input to make sure it is not empty.
    *
-   * @param message to print out
+   * @param message to print to the user
    * @return string input by the user
    */
   private String stringChecker(String message) {

@@ -64,21 +64,28 @@ public class Register {
   /**
    * Searches the product register for products that contain the passed product number.
    * It is assumed that the product numbers are the same length and unique.
+   * Will return a list with only one product in the case of an exact match.
    *
    * @param productNumber to search with
    * @return ArrayList of products containing the product number
    */
   public List<Product> searchProductByProductNumber(String productNumber) {
     ArrayList<Product> searchResultList = new ArrayList<>();
-    Iterator<String> iterator = getIterator();
-    //Iterator loops through the list of product numbers
-    //If product number contains the parameter string the product
-    //gets added to searchResultList
-    while (iterator.hasNext()) {
-      String currentKey = iterator.next();
-      if (getProductRegister().get(currentKey).getProductNumber()
-          .toLowerCase().contains(productNumber.toLowerCase())) {
-        searchResultList.add(getProductRegister().get(currentKey));
+    //First checks if there is an exact match
+    if (isProductNumberInRegister(productNumber)) {
+      searchResultList.add(getProductRegister().get(productNumber));
+    } else {
+      //Skips this if there is an exact match
+      Iterator<String> iterator = getIterator();
+      //Iterator loops through the list of product numbers
+      //If product number contains the parameter string the product
+      //gets added to searchResultList
+      while (iterator.hasNext()) {
+        String currentKey = iterator.next();
+        if (getProductRegister().get(currentKey).getProductNumber()
+                .toLowerCase().contains(productNumber.toLowerCase())) {
+          searchResultList.add(getProductRegister().get(currentKey));
+        }
       }
     }
     return searchResultList;
