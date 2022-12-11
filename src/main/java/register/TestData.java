@@ -1,9 +1,7 @@
 package register;
 
-import java.util.List;
 import java.util.Random;
 import product.Product;
-import product.ProductCategory;
 import product.ProductSpecifications;
 
 
