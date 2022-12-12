@@ -296,7 +296,8 @@ public class ProductRegisterUI {
     if (productToChange == null) {
       return;
     }
-    System.out.println("Enter the change in stock for the product: ");
+    System.out.println("Enter the change in stock for the product" +
+            " (4 adds four to the stock, -4 removes four): ");
     tempStock = intChecker();
     productToChange.setStock(productToChange.getStock() + tempStock);
 
